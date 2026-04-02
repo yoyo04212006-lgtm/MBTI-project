@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Noto Sans TC", ui-sans-serif, system-ui, sans-serif;
+  
+  /* Vibrant MBTI Colors */
+  --color-mbti-ei: #4ADE80; /* Green */
+  --color-mbti-sn: #FACC15; /* Yellow */
+  --color-mbti-tf: #60A5FA; /* Blue */
+  --color-mbti-jp: #A78BFA; /* Purple */
+  
+  /* Action Gradients */
+  --color-action-start: #8B5CF6;
+  --color-action-end: #EC4899;
+}
+
+@layer base {
+  body {
+    @apply bg-[#FDFCF9] text-slate-800 antialiased;
+    background-image: radial-gradient(#E2E8F0 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+  }
+}
+
+.mbti-gradient {
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%);
+  background-size: 200% 200%;
+  animation: gradient-move 5s ease infinite;
+}
+
+@keyframes gradient-move {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.mbti-card {
+  @apply bg-white/80 backdrop-blur-md rounded-[2rem] shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-white/40;
+}
+
+.mbti-btn {
+  @apply relative overflow-hidden transition-all duration-300 active:scale-95 rounded-full;
+}
+
+.arrow-btn {
+  clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+  overflow: visible !important;
+  filter: drop-shadow(0 10px 15px rgba(99, 102, 241, 0.4));
+}
+
+.progress-bar-transition {
+  transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.option-card {
+  @apply p-5 rounded-full border-2 border-slate-100 bg-white transition-all duration-300 cursor-pointer flex items-center justify-between;
+}
+
+.option-card:hover {
+  @apply border-indigo-300 bg-indigo-50/50 scale-[1.02];
+}
+
+.option-card.selected {
+  @apply border-indigo-500 bg-indigo-50 shadow-md;
+}
+
+/* Dimension Specific Styles */
+.dim-ei { @apply border-emerald-500 bg-emerald-50 text-emerald-600; }
+.dim-sn { @apply border-amber-500 bg-amber-50 text-amber-600; }
+.dim-tf { @apply border-blue-500 bg-blue-50 text-blue-600; }
+.dim-jp { @apply border-purple-500 bg-purple-50 text-purple-600; }
+
+.dim-ei-hover:hover { @apply border-emerald-300 bg-emerald-50/50; }
+.dim-sn-hover:hover { @apply border-amber-300 bg-amber-50/50; }
+.dim-tf-hover:hover { @apply border-blue-300 bg-blue-50/50; }
+.dim-jp-hover:hover { @apply border-purple-300 bg-purple-50/50; }
+
+.dim-ei-text { @apply text-emerald-600; }
+.dim-sn-text { @apply text-amber-600; }
+.dim-tf-text { @apply text-blue-600; }
+.dim-jp-text { @apply text-purple-600; }
+
+.dim-ei-bg { @apply bg-emerald-500; }
+.dim-sn-bg { @apply bg-amber-500; }
+.dim-tf-bg { @apply bg-blue-500; }
+.dim-jp-bg { @apply bg-purple-500; }
